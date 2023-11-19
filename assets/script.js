@@ -8,8 +8,8 @@ $(function () {
 
     for (var i = 0; i <= maxHours; i++) {
 
-        console.log("Iteration:", i);
-        console.log("Current Calendar Time:", calendarTime);
+        // console.log("Iteration:", i);
+        // console.log("Current Calendar Time:", calendarTime);
     
         var irlTime = new Date();
         var blockType = compareTime(dayjs(irlTime), dayjs().hour(calendarTime));
