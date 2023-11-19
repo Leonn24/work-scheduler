@@ -1,5 +1,3 @@
-
-
 // Funtion for current date and for loop for time and date //
 
 $(function () {
@@ -9,15 +7,18 @@ $(function () {
     var calendarTime = 9;
 
     for (var i = 0; i <= maxHours; i++) {
-        //   irlTime = new Date();
-        var irlTime = new Date(2023, 10, 15, 12, 0, 0, 0);
+
+        console.log("Iteration:", i);
+        console.log("Current Calendar Time:", calendarTime);
+    
+        var irlTime = new Date();
         var blockType = compareTime(dayjs(irlTime), dayjs().hour(calendarTime));
 
         createTimeBlock(calendarTime, blockType);
 
         addEventListenersForSaveButton(calendarTime);
 
-        displaySavedTodos(calendarTime);
+        displaySavedToDos(calendarTime);
 
         calendarTime += 1;
     }
@@ -52,6 +53,8 @@ function createTimeBlock(hour, timeBlockType) {
     mainDiv.appendChild(textarea);
     mainDiv.appendChild(button);
 
+    // document.getElementById('calendar').appendChild(mainDiv);
+
     document.body.appendChild(mainDiv);
 }
 
@@ -65,11 +68,17 @@ function convertToHour(hour) {
 // Function to compare current time and calendar time //
 
 function compareTime(currentTime, calendarTime) {
+    // console.log('Current Time:', dayjs(currentTime).format('YYYY-MM-DD HH:mm:ss'));
+    // console.log('Calendar Time:', dayjs(calendarTime).format('YYYY-MM-DD HH:mm:ss'));
+
     if (dayjs(currentTime).isBefore(calendarTime, 'hour')) {
-        return 'past';
+        // console.log('Future');
+        return 'future';
     } else if (dayjs(currentTime).isAfter(calendarTime, 'hour')) {
-        return 'future'
+        // console.log('Past');
+        return 'past';
     } else {
+        // console.log('Present');
         return 'present';
     }
 }
@@ -126,7 +135,7 @@ function addEventListenersForSaveButton(id) {
 
 // Function to display saved ToDos //
 
-function displaySavedTodos(calendarTime) {
+function displaySavedToDos(calendarTime) {
     var savedDescription = localStorage.getItem(`hour-${calendarTime}`);
 
     if (savedDescription !== null) {
