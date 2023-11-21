@@ -1,4 +1,4 @@
-// Funtion for current date and for loop for time and date //
+// Funtion for current date and for loop for time block rows //
 
 $(function () {
     displayCurrentDate();
@@ -13,18 +13,18 @@ $(function () {
     
         var irlTime = new Date();
         var blockType = compareTime(dayjs(irlTime), dayjs().hour(calendarTime));
-
+        //  runs the function for time block 
         createTimeBlock(calendarTime, blockType);
-
+        //  runs the function for event listener
         addEventListenersForSaveButton(calendarTime);
-
+        //  displays saved to dos
         displaySavedToDos(calendarTime);
 
         calendarTime += 1;
     }
 });
 
-// Function that creates the timeblocks //
+// Function that creates the timeblocks and appends them to our html elements//
 
 function createTimeBlock(hour, timeBlockType) {
     var mainDiv = document.createElement("div");
@@ -65,7 +65,7 @@ function convertToHour(hour) {
     return dayjs().hour(hour).format('hA')
 }
 
-// Function to compare current time and calendar time //
+// Function to compare current time and calendar time and gives our rows color //
 
 function compareTime(currentTime, calendarTime) {
     // console.log('Current Time:', dayjs(currentTime).format('YYYY-MM-DD HH:mm:ss'));
@@ -133,7 +133,7 @@ function addEventListenersForSaveButton(id) {
     });
 }
 
-// Function to display saved ToDos //
+// Function to display saved ToDos from localstorage //
 
 function displaySavedToDos(calendarTime) {
     var savedDescription = localStorage.getItem(`hour-${calendarTime}`);
