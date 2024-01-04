@@ -23,8 +23,11 @@ THEN the text for that event is saved in local storage
 WHEN I refresh the page
 THEN the saved events persist
 ```
+## Screenshots
 
-![preview](./assets/images/workschedule.png)
-![preview2](./assets/images/workschedule2.png)
+![preview](/assets/images/workschedule.png)
+![preview2](/assets/images/workschedule2.png)
+
+## Repo Link
 
 https://github.com/Leonn24/work-scheduler
