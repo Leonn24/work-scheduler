@@ -7,9 +7,6 @@ $(function () {
     var calendarTime = 9;
 
     for (var i = 0; i <= maxHours; i++) {
-
-        // console.log("Iteration:", i);
-        // console.log("Current Calendar Time:", calendarTime);
     
         var irlTime = new Date();
         var blockType = compareTime(dayjs(irlTime), dayjs().hour(calendarTime));
@@ -68,17 +65,12 @@ function convertToHour(hour) {
 // Function to compare current time and calendar time and gives our rows color //
 
 function compareTime(currentTime, calendarTime) {
-    // console.log('Current Time:', dayjs(currentTime).format('YYYY-MM-DD HH:mm:ss'));
-    // console.log('Calendar Time:', dayjs(calendarTime).format('YYYY-MM-DD HH:mm:ss'));
 
     if (dayjs(currentTime).isBefore(calendarTime, 'hour')) {
-        // console.log('Future');
         return 'future';
     } else if (dayjs(currentTime).isAfter(calendarTime, 'hour')) {
-        // console.log('Past');
         return 'past';
     } else {
-        // console.log('Present');
         return 'present';
     }
 }
